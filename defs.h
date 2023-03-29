@@ -1,18 +1,18 @@
 #ifndef DEFS_H
 #define DEFS_H
 
-typedef unsigned long long U64;
+typedef unsigned long long U64; // Making a type (typedef means define type, so I'm basically making my own type) that allocates 64 bits of memory meaning I can have 64 bits.
 
-#define NAME "Xerves 1.0"
-#define BRD_SQ_NUM 120
+#define NAME "Xerves 1.0" // Defining the name of my engine, currently the name is the officla name "Xerves" and the version is 1.0.
+#define BRD_SQ_NUM 120 // The total number of squares there are in the move searching system, whereas in game its only 64. This is because of faster move searching and to negate errors.
 
-enum {EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK};
+enum {EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK};  // The only pieces that can exist on a square. Besides empty, the first letter references the color and the second letter references the class of the piece.
 
-enum {FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_NONE};
+enum {FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_NONE}; // The FILE A - H that exists on a chess board. Needed for hierarchical purposes.
 
-enum {RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_NONE};
+enum {RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_NONE}; // The RANK 1 - 8 that exists on a chess board. Needed for hierarchical purposes.
 
-enum {
+enum { // Contains all the indexes of the squares on the chess board.
     A1 = 21, B1, C1, D1, E1, F1, G1, H1,
     A2 = 31, B2, C2, D2, E2, F2, G2, H2,
     A3 = 41, B3, C3, D3, E3, F3, G3, H3,
@@ -21,13 +21,14 @@ enum {
     A6 = 71, B6, C6, D6, E6, F6, G6, H6,
     A7 = 81, B7, C7, D7, E7, F7, G7, H7,
     A8 = 91, B8, C8, D8, E8, F8, G8, H8, NO_SQ
-};
+}; 
 
-enum {FALSE, TRUE}; 
+enum {FALSE, TRUE};  // To use booleans.
+enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8}; // Castling permission. colour_letter + KCA = King Side Castling, colour_letter + QCA = Queen Side Castling.
 
-enum {WHITE, BLACK, BOTH};
+enum {WHITE, BLACK, BOTH}; // Array containing the sides/colours of the game.
 
-typedef struct {
+typedef struct { // The Board Object containg the variables it needs to operate.
 
     int pieces[BRD_SQ_NUM]; 
     U64 pawns[3];
@@ -50,6 +51,6 @@ typedef struct {
 
     
 
-} S_BOARD;
+} S_BOARD; 
 
 #endif
