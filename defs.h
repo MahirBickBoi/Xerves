@@ -27,11 +27,29 @@ enum {FALSE, TRUE};
 
 enum {WHITE, BLACK, BOTH};
 
-enum {WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8};
+typedef struct {
 
-enum {HFNONE, HFALPHA, HFBETA, HFEXACT};
+    int pieces[BRD_SQ_NUM]; 
+    U64 pawns[3];
 
-enum {PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING};
+    int KingSq[2];
 
+    int side;
+    int enPas;
+    int fiftyMove;
+
+    int ply;
+    int hisPly;
+
+    U64 posKey;
+
+    int pieceNumber[13];
+    int bigPiece[3];
+    int majorPiece[3];
+    int minorPiece[3];
+
+    
+
+} S_BOARD;
 
 #endif
