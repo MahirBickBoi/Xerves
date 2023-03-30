@@ -1,4 +1,5 @@
 FILENAME = main
+SOURCES = $(wildcard *.c)
 
 all:
-	gcc -O3 xerves.c -o $(FILENAME)
+	gcc -O3 $(SOURCES) -o $(FILENAME)
