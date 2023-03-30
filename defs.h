@@ -76,6 +76,8 @@ extern int Sq64ToSq120[64];
 
 // Functions //
 
+extern void AllInit(); 
+
 // init.c
 
 
