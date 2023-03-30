@@ -5,6 +5,7 @@ typedef unsigned long long U64; // Making a type (typedef means define type, so 
 
 #define NAME "Xerves 1.0" // Defining the name of my engine, currently the name is the officla name "Xerves" and the version is 1.0.
 #define BRD_SQ_NUM 120 // The total number of squares there are in the move searching system, whereas in game its only 64. This is because of faster move searching and to negate errors.
+#define MAXGAMEMOVES 2048
 
 enum {EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK};  // The only pieces that can exist on a square. Besides empty, the first letter references the color and the second letter references the class of the piece.
 
@@ -24,7 +25,19 @@ enum { // Contains all the indexes of the squares on the chess board.
 }; 
 
 enum {FALSE, TRUE};  // To use booleans.
+
 enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8}; // Castling permission. colour_letter + KCA = King Side Castling, colour_letter + QCA = Queen Side Castling.
+
+typedef struct{
+
+    int move;
+    int castlePerm;
+    int enPas;
+    int fiftyMove;
+    U64 posKey;
+
+
+} S_UNDO;
 
 enum {WHITE, BLACK, BOTH}; // Array containing the sides/colours of the game.
 
@@ -42,6 +55,7 @@ typedef struct { // The Board Object containg the variables it needs to operate.
     int ply;
     int hisPly;
 
+
     U64 posKey;
 
     int pieceNumber[13];
@@ -49,7 +63,7 @@ typedef struct { // The Board Object containg the variables it needs to operate.
     int majorPiece[3];
     int minorPiece[3];
 
-    
+    S_UNDO history[MAXGAMEMOVES];
 
 } S_BOARD; 
 
