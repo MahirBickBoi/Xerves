@@ -67,4 +67,16 @@ typedef struct { // The Board Object containg the variables it needs to operate.
 
 } S_BOARD; 
 
+// Macros //
+
+// Globals //
+
+extern int Sq120ToSq64[BRD_SQ_NUM];
+extern int Sq64ToSq120[64];
+
+// Functions //
+
+// init.c
+
+
 #endif
