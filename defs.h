@@ -68,6 +68,9 @@ typedef struct { // The Board Object containg the variables it needs to operate.
 } S_BOARD; 
 
 // Macros //
+#define FR2SQ(f,r) ( (21 + (f) ) + ( (r) * 10 ) )
+#define SQ64(sq120) (Sq120ToSq64[(sq120)])
+#define SQ120(sq64) (Sq64ToSq120[(sq64)])
 
 // Globals //
 
@@ -80,5 +83,7 @@ extern void AllInit();
 
 // init.c
 
+// bitboards.c
+void PrintBitBoard(U64 bb);
 
 #endif
