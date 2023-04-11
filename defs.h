@@ -6,6 +6,8 @@ typedef unsigned long long U64; // Making a type (typedef means define type, so 
 #define NAME "Xerves 1.0" // Defining the name of my engine, currently the name is the officla name "Xerves" and the version is 1.0.
 #define BRD_SQ_NUM 120 // The total number of squares there are in the move searching system, whereas in game its only 64. This is because of faster move searching and to negate errors.
 #define MAXGAMEMOVES 2048
+#define POP(b) PopBit(b)
+#define CNT(b) CountBits(b)
 
 enum {EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK};  // The only pieces that can exist on a square. Besides empty, the first letter references the color and the second letter references the class of the piece.
 
@@ -76,6 +78,8 @@ typedef struct { // The Board Object containg the variables it needs to operate.
 
 extern int Sq120ToSq64[BRD_SQ_NUM];
 extern int Sq64ToSq120[64];
+extern U64 SetMask[64];
+extern U64 ClearMask[64];
 
 // Functions //
 
@@ -84,6 +88,8 @@ extern void AllInit();
 // init.c
 
 // bitboards.c
-void PrintBitBoard(U64 bb);
+extern void PrintBitBoard(U64 bb);
+extern int PopBit(U64 *bb);
+extern int CountBits(U64 b);
 
 #endif
